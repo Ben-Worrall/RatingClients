@@ -1,0 +1,38 @@
+
+#JoinRoomHolder{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+#JoinRoomInput{
+    width: 30%;
+    height: 10%;
+    border-radius:  15px 15px 15px 15px;
+    border: 0.2vh solid black;
+    font-size: 200%;
+    text-align: center;
+}
+#JoinRoomBNT{
+    width: 20%;
+    height: 10%;
+    border-radius:  15px 15px 15px 15px;
+    border: 0.2vh solid black;
+    font-size: 200%;
+    text-align: center;
+}
+#JoinRoomBackBNT{
+    width: max-content;
+    height: max-content;
+    border-radius:  15px 15px 15px 15px;
+    border: 0.2vh solid black;
+    font-size: 200%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1%;
+}

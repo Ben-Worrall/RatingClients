@@ -1,7 +1,19 @@
+import { Link} from "react-router-dom";
+import './styles/JoinRoom.css'
+
 const JoinRoom= () => {
     return (
-        <div>
-            <h2>Test</h2>
+        
+        
+        
+        <div id='JoinRoomHolder'>
+
+            <Link to='/'>
+            <button id='JoinRoomBackBNT'>back</button>
+            </Link>
+
+            <input placeholder="Room Code" id='JoinRoomInput'></input>
+            <button id="JoinRoomBNT">Join</button>
         </div>
     )
 }
