@@ -1,0 +1,111 @@
+#CreateRoomBackBNT{
+    width: max-content;
+    height: max-content;
+    border-radius:  15px 15px 15px 15px;
+    border: 0.2vh solid black;
+    font-size: 200%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1%;
+}
+
+
+/* custom factor rating board stuff */
+
+#RatingBoard{
+    position: absolute;
+    width: 95%;
+    height: 70%;
+    background-color: white;
+    overflow: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+/* add factor div and button */
+#AddFactorDiv{
+    outline: 0.25vh solid black;
+    width: 50%;
+    height: 12.5%;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+#AddFactorBNT{
+    background-color: green;
+    color: white;
+    border-radius:  15px 15px 15px 15px;
+    border: 0.25vh solid black;
+    height: 60%;
+    width: 25%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90%;
+    user-select: none;
+}
+
+/* the factor and its conponents */
+.factor{
+    outline: 0.25vh solid black;
+    width: 50%;
+    height: 12.5%;
+    float: left;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.factorText{
+    width: 65%;
+    float: left;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 0.5vh solid black;
+    height: max-content;
+    font-size: 200%;
+    outline: 0px solid transparent
+}
+.factorRating{
+    width: 40%;
+    float: right;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
+    font-size: 200%;
+}
+.ratingOutOf{
+    outline: 0px solid transparent;
+    width:40%;
+}
+.ratingFor{
+    width: 33%;
+}
+.slash{
+    margin-right: 5%;
+}
+.DelFactorHolder{
+    height: 100%;
+    display: flex;
+    align-items: start;
+}
+.DelFactor{
+    position: relative;
+   float: right;
+   font-size: 100%;
+   background-color: red;
+   color:white;
+   border: 0px solid transparent;
+
+
+}
+

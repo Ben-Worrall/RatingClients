@@ -7,33 +7,27 @@ import {  BrowserRouter as Router,
   Route,
   } from "react-router-dom";
 import JoinRoute from './routes/JoinRoom'
-import CreateRoute from './routes/CreateRoom'
 import Home from './Home'
+import CreateRoomHTML from "./routes/CreateRoom";
+import {defineRoutes} from "react-router-dom"
+
+
+
+//loop through the max amount of possible paths, and run the "createing path function"
 
 
 function App() {
+  
   return (
-
-    
     <Router>
-
-        {/*<Link to='/routes/JoinRoute'>
-          <button className="BNT">JoinRoom</button>
-        </Link>
-
-        <Link to='/routes/CreateRoute'>
-          <button className="BNT">CreateRoom</button>
-  </Link>*/}
-       
-     
        <div className="App">
         <Routes>
 
-
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/routes/JoinRoom' element={<JoinRoute/>} />
-          <Route exact path='/routes/CreateRoom' element={<CreateRoute/>} />
 
+          
+          
 
         </Routes>
         </div>
@@ -45,4 +39,6 @@ function App() {
 }
 
 
-export default App;
+ 
+
+ export default App;
