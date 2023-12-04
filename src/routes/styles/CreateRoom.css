@@ -78,10 +78,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 0.5vh solid black;
+    border: 0vh solid black;
+    border-right: 0.25vh solid black;
+    overflow: auto;
     height: max-content;
     font-size: 200%;
-    outline: 0px solid transparent
+    outline: 0px solid transparent;
+
 }
 .factorRating{
     width: 40%;

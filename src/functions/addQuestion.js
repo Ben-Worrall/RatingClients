@@ -45,10 +45,9 @@ import React from "react";
     factorText.placeholder = "Edit Factor"
     factorText.contentEditable = "true"
     factorText.spellcheck = "false"
-    factorText.style.border = "0vh solid black"
-    factorText.style.borderRight = "0.25vh solid black"
-    factorText.style.outline = ""
-    factorText.style.overflowX = "scroll"
+    //factorText.style.border = "0vh solid black"
+    //factorText.style.borderRight = "0.25vh solid black"
+    //factorText.style.overflowX = "scroll"
     let factorRating = document.createElement('div')
     factorRating.classList.add('factorRating')
           
