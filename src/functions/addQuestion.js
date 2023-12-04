@@ -1,45 +1,71 @@
 import React from "react";
 
 
+
+
+
+
+
+
  function addFactor(){
     
+    //clear (edit factor) text 
+ function ClearText(e){
+    
+    console.log(e)
+}
+
+//exit/close current factor 
+
+ function CloseFactor(e){
+    console.log(e)
+
+}
+
+
+
+
+
+
+
     console.log('test')
-    //remove factor button
+    //remove current "addFactor"
     document.getElementById('AddFactorDiv').remove()
 
-    //create factor
+    //create "editable question" (factor)
     let factor = document.createElement('div')
     factor.classList.add('factor')
 
+    //within the factor
+ 
+        //for host to edit question
     let factorText = document.createElement('div')
     factorText.classList.add('factorText')
-    factorText.setAttribute('onmousedown', "ClearText(this)")
+    factorText.setAttribute('onmousedown', ClearText(factorText))
     factorText.innerText = "Edit Factor"
     factorText.contentEditable = "true"
     factorText.spellcheck = "false"
-
-
-
     let factorRating = document.createElement('div')
     factorRating.classList.add('factorRating')
-
+          
+        //for  question mark (user will eventually be able edit and rate)
     let div1 = document.createElement('div')
     div1.classList.add('ratingFor')
     div1.innerText = "?"
     div1.contentEditable = "false"
     factorRating.appendChild(div1)
 
+        //just a slash
     let div2 = document.createElement('div')
     div2.classList.add('slash')
     div2.innerText = "/"
     factorRating.appendChild(div2)
-
+        // what the rating is out of (10) can make host edit it later maybe
     let div3 = document.createElement('div')
     div3.classList.add('ratingOutOf')
-    div3.setAttribute('onmousedown', "ClearText(this)")
-    div3.innerText = "Edit"
+    div3.innerText = "10"
     div3.spellcheck = "false"
-    div3.contentEditable = "true"
+    div3.contentEditable = "false"
     factorRating.appendChild(div3)
 
 
@@ -54,12 +80,14 @@ import React from "react";
 
 
 
+    //everything ot each other then append that to the rating board
     //append factor to the rating board
     factor.appendChild(factorText)
     factor.appendChild(factorRating)
     factor.appendChild(BntHolder)
     document.getElementById('RatingBoard').appendChild(factor)
-    
+
+     
 
 
     //create new (add factor) div
@@ -79,23 +107,19 @@ import React from "react";
     //then append (add factor) div to the rating board
     document.getElementById('RatingBoard').appendChild(AddFactorDiv)
 
+    
+
+
+    
 }
 
 
-//clear (edit factor) text 
-function ClearText(e){
-    e.innerText = ""
-    e.focus()
-}
 
-//exit/close current factor 
 
-function CloseFactor(e){
-    console.log(e.parentNode.parentNode)
-    e.parentNode.parentNode.remove()
 
-}
 
-export default {addFactor, ClearText, CloseFactor}
+
+
+export default addFactor
 
 

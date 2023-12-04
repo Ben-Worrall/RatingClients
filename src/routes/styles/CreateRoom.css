@@ -1,3 +1,12 @@
+#root{
+    background-color: chocolate;
+}
+.App{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
 #CreateRoomBackBNT{
     width: max-content;
     height: max-content;
@@ -33,6 +42,7 @@
     align-items: center;
     justify-content: center;
     user-select: none;
+    margin:1%;
 }
 #AddFactorBNT{
     background-color: green;
@@ -52,14 +62,14 @@
 /* the factor and its conponents */
 .factor{
     outline: 0.25vh solid black;
-    width: 50%;
+    width: 45%;
     height: 12.5%;
     float: left;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    margin: 1%;
 }
 .factorText{
     width: 65%;
