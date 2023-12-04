@@ -39,12 +39,16 @@ import React from "react";
     //within the factor
  
         //for host to edit question
-    let factorText = document.createElement('div')
+    let factorText = document.createElement('input')
     factorText.classList.add('factorText')
     factorText.setAttribute('onmousedown', ClearText(factorText))
-    factorText.innerText = "Edit Factor"
+    factorText.placeholder = "Edit Factor"
     factorText.contentEditable = "true"
     factorText.spellcheck = "false"
+    factorText.style.border = "0vh solid black"
+    factorText.style.borderRight = "0.25vh solid black"
+    factorText.style.outline = ""
+    factorText.style.overflowX = "scroll"
     let factorRating = document.createElement('div')
     factorRating.classList.add('factorRating')
           
