@@ -9,16 +9,12 @@ import React from "react";
 
  function addFactor(){
     
-    //clear (edit factor) text 
- function ClearText(e){
-    
-    console.log(e)
-}
+   
 
 //exit/close current factor 
 
- function CloseFactor(e){
-    console.log(e)
+ function CloseFactor(){
+    console.log(this.parentNode.parentNode.remove())
 
 }
 
@@ -41,7 +37,7 @@ import React from "react";
         //for host to edit question
     let factorText = document.createElement('input')
     factorText.classList.add('factorText')
-    factorText.setAttribute('onmousedown', ClearText(factorText))
+    
     factorText.placeholder = "Edit Factor"
     factorText.contentEditable = "true"
     factorText.spellcheck = "false"
@@ -76,7 +72,7 @@ import React from "react";
     let exitBNT = document.createElement('button')
     exitBNT.classList.add('DelFactor')
     exitBNT.innerText = "X"
-    exitBNT.setAttribute('onmousedown', "CloseFactor(this)")
+    exitBNT.onmousedown = CloseFactor
     let BntHolder = document.createElement('div')
     BntHolder.classList.add('DelFactorHolder')
     BntHolder.appendChild(exitBNT)

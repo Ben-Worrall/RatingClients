@@ -10,8 +10,10 @@ import JoinRoute from './routes/JoinRoom'
 import Home from './Home'
 import CreateRoomHTML from "./routes/CreateRoom";
 import {defineRoutes} from "react-router-dom"
+import storeCode from "./firebase/generateAllCodes";
 
-
+//generateall the game codes
+//storeCode()
 
 //loop through the max amount of possible paths, and run the "createing path function"
 
