@@ -6,7 +6,8 @@ import Home from "../Home";
 import ReactDOM from 'react-dom/client';
 
 import addFactor from '../functions/addQuestion.js'
-import getRandomCode from '../functions/HostCode.js';
+import GetRandomCode from '../functions/HostCode.js';
+import WaitingRoomHTML from './waitingRoom.js';
 //import ClearText from '../functions/CreateRoomFunc.js'
 //import CloseFactor from '../functions/CreateRoomFunc.js'
 
@@ -45,16 +46,32 @@ const CreateRoomHTML= () => {
     )
       
      }
+
+
+     async function GoWaitingRoom(){
+        var URL = window.location.href
+        var newURL = URL.substring(URL.length - 20)
+        navigate('/routes/waitingRoom/'+newURL)
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+          <BrowserRouter>
+            <WaitingRoomHTML />
+          </BrowserRouter>,
+          document.getElementById('root')
+        )
+     }
+
     return (
         <div className="App">
             
-            <div id="RoomPassword">
+            {/*<div id="RoomPassword">
                 <div id="RoomPasswordTextOnly">Room Password:</div>
                 <div id="RoomPasswordText">7787</div>
                 <button id="CopyPassword"  >
                   Copy
                 </button>
-            </div>
+            </div>*/}
 
 
 
@@ -72,7 +89,7 @@ const CreateRoomHTML= () => {
 
 
             <div id="ButtonHolder-CreateRoom">
-                <button id="StartRoomBNT" onClick={getRandomCode} >Start Room</button>
+                <button id="StartRoomBNT" onClick={GoWaitingRoom} >Start Room</button>
                 <button id='CreateRoomBackBNT' onClick={GoHomeBNT}>Back</button>
             </div>
 

@@ -8,7 +8,7 @@ const storeCode = async () => {
 
     const valRef = collection(txtDB, 'AvailableCodes')
     for(let i = 1000 ; i < 10000; i++){
-       addDoc(valRef, {GameId: i})
+       addDoc(valRef, {GameCode: i})
         
     }
     
