@@ -37,8 +37,20 @@ const WaitingRoomHTML = () => {
 
             {/*  display participants  */}
             <div id='RoomParticipants'>
-                <div></div> 
+                <div id='Participant-text'>Participants:</div> 
+                <div id='ParticipantsList'>
+                  <div className='Participants-name'>Matthew</div>
+                  <div className='Participants-name'>Mark</div>
+                  <div className='Participants-name'>Luke</div>
+                  <div className='Participants-name'>John</div>
+                  
+                </div>
+            </div>
 
+
+            <div id="ButtonHolder-WaitingRoom">
+                <button id="StartRoomButton"  >Start Room</button>
+                <button id='HomeButton' onClick={GoHomeBNT}>Home</button>
             </div>
 
         </div>
