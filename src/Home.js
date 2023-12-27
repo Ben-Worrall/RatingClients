@@ -36,9 +36,11 @@ const Home = () => {
   let navigate = useNavigate();
   
   async function CreateRoomURL(){
-     navigate('/routes/CreateRoom/'+NewWebId)
-    NewCreatedRoomUrl = NewWebId
-    NewWebId = makeid(20)
+     navigate('/routes/CreateRoom/')
+     
+    //NewCreatedRoomUrl = NewWebId
+    //NewWebId = makeid(20)
+    //navigate('/routes/CreateRoom/'+NewWebId)
     
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(

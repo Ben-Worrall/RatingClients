@@ -11,6 +11,7 @@ import Home from './Home'
 import CreateRoomHTML from "./routes/CreateRoom";
 import {defineRoutes} from "react-router-dom"
 import storeCode from "./firebase/generateAllCodes";
+import WaitingRoomHTML from "./routes/waitingRoom";
 
 //generateall the game codes
 //storeCode()
@@ -27,6 +28,8 @@ function App() {
 
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/routes/JoinRoom' element={<JoinRoute/>} />
+          <Route exact path='/routes/CreateRoom' element={<CreateRoomHTML/>} />
+          <Route exact path='/routes/waitingRoom' element={<WaitingRoomHTML/>} />
 
           
           

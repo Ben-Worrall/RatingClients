@@ -4,14 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 import './styles/CreateRoom.css'
 import Home from "../Home";
 import ReactDOM from 'react-dom/client';
-
+import { useState } from 'react';
 import addFactor from '../functions/addQuestion.js'
 import GetRandomCode from '../functions/HostCode.js';
 import WaitingRoomHTML from './waitingRoom.js';
 //import ClearText from '../functions/CreateRoomFunc.js'
 //import CloseFactor from '../functions/CreateRoomFunc.js'
-
-
 
 
 //clear (edit factor) text 
@@ -28,7 +26,11 @@ function CloseFactor(e){
 
 }
 
-
+for(let i =0; i < 10; i++){
+  for(let k =0; k < 10; k++){
+    console.log(i,k)
+  }
+}
 
 
 
@@ -49,9 +51,10 @@ const CreateRoomHTML= () => {
 
 
      async function GoWaitingRoom(){
-        var URL = window.location.href
-        var newURL = URL.substring(URL.length - 20)
-        navigate('/routes/waitingRoom/'+newURL)
+       // var URL = window.location.href
+        //var newURL = URL.substring(URL.length - 20)
+        //navigate('/routes/waitingRoom/'+newURL)
+        navigate('/routes/waitingRoom/')
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(
