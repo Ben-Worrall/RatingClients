@@ -7,6 +7,10 @@ import { BrowserRouter } from 'react-router-dom'
 import JoinRoom from "./routes/JoinRoom";
 
 
+window.addEventListener('load', function(){
+  localStorage.clear()
+})
+
 //create a random game id 
 const makeid =(length) => {
   let result = '';
@@ -64,6 +68,7 @@ const Home = () => {
  }
 
     return (
+      
         <div>
           
             

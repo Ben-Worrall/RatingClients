@@ -26,11 +26,7 @@ function CloseFactor(e){
 
 }
 
-for(let i =0; i < 10; i++){
-  for(let k =0; k < 10; k++){
-    console.log(i,k)
-  }
-}
+
 
 
 
@@ -38,22 +34,30 @@ for(let i =0; i < 10; i++){
 const CreateRoomHTML= () => {
     let navigate = useNavigate();
     async function GoHomeBNT(){
-        navigate('/')
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-      <BrowserRouter>
-        <Home />
-      </BrowserRouter>,
-      document.getElementById('root')
-    )
+      localStorage.clear()
+      navigate('/')
+      window.location.reload()
+    
       
      }
 
 
      async function GoWaitingRoom(){
+
+      //adds factors to local storage to set out once the host starts
+      let AllFactorText = document.querySelectorAll('.factorText')
+      //add any filled in factors to local storage
+      for(let i = 0; i < AllFactorText.length; i++){
+        if(AllFactorText[i].value !== ""){
+          localStorage.setItem('Factor'+i, AllFactorText[i].value)
+        }
+      }
+
+
        // var URL = window.location.href
         //var newURL = URL.substring(URL.length - 20)
         //navigate('/routes/waitingRoom/'+newURL)
+        
         navigate('/routes/waitingRoom/')
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -63,6 +67,7 @@ const CreateRoomHTML= () => {
           </BrowserRouter>,
           document.getElementById('root')
         )
+        
      }
 
     return (

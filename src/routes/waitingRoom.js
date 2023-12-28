@@ -79,7 +79,7 @@ const WaitingRoomHTML = () => {
 
 
      //back to normal
-      
+     localStorage.clear()
      navigate('/')
      window.location.reload()
     
