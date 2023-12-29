@@ -3,7 +3,7 @@ import { txtDB } from "../firebase/firebaseConfig";
 import { collection, Firestore, getDocs, getFirestore, Query, QueryDocumentSnapshot, QuerySnapshot } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom'
-import WaitingRoomHTML from "../routes/waitingRoom";
+import WaitingRoomHTML from "../routes/HostRoom";
 import ReactDOM from 'react-dom/client';
 
 

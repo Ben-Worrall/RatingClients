@@ -6,10 +6,25 @@ import Home from "../Home";
 import ReactDOM from 'react-dom/client';
 import { useState } from 'react';
 import addFactor from '../functions/addQuestion.js'
-import GetRandomCode from '../functions/HostCode.js';
-import WaitingRoomHTML from './waitingRoom.js';
+
+import HostRoomHTML from './HostRoom.js';
 //import ClearText from '../functions/CreateRoomFunc.js'
 //import CloseFactor from '../functions/CreateRoomFunc.js'
+import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, addDoc} from 'firebase/firestore'
+import { txtDB } from '../firebase/firebaseConfig';
+
+
+const db = getFirestore()
+
+
+//if user reloads page
+window.addEventListener("beforeunload", function(e){
+  let x = document.getElementById('RoomPasswordText').innerText
+  let y = String(x)
+  let z = Number(y)
+  const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
+  updateDoc(docRef, {[y]: z})
+});
 
 
 //clear (edit factor) text 
@@ -28,10 +43,51 @@ function CloseFactor(e){
 
 
 
+//generate random code
+
+var randomCode 
+var readyToUse
+var CurStringCode
+function GenerateCode(){
+  //randomCode = Math.floor(1000 + Math.random() * 9000)
+  randomCode = 1000
+}
+
+//generate random code from database
+
+const GetRandomCode = async () => {
+
+  GenerateCode()
+  
+  //query the random code and then get that code from the database
+
+  const querySnapshot = await getDocs(collection(db, "AvailableCodes"));
+  querySnapshot.forEach((doc) => {
+  //console.log(doc.data()[randomCode])
+  readyToUse = doc.data()[randomCode]
+  document.getElementById('RoomPasswordText').innerHTML = readyToUse
+ });
+
+ CurStringCode = String(readyToUse)
+ //delete the code from the database after accessing it
+ const deleteFields = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
+ await updateDoc(deleteFields, {[CurStringCode]: deleteField()})
+ 
+
+}
+
+
+GetRandomCode()
+
+
 
 
 
 const CreateRoomHTML= () => {
+
+
+  
+
     let navigate = useNavigate();
     async function GoHomeBNT(){
       localStorage.clear()
@@ -42,44 +98,75 @@ const CreateRoomHTML= () => {
      }
 
 
-     async function GoWaitingRoom(){
 
-      //adds factors to local storage to set out once the host starts
-      let AllFactorText = document.querySelectorAll('.factorText')
+
+
+
+     //when user presses start on the "start room" button
+
+
+     async function GoHostRoom(){
+       
+      //add server code in the form of a document
+      const dbRef = collection(db, "Servers")
+      const data = {
+        code: Number(document.getElementById('RoomPasswordText').innerHTML)
+     };
+     addDoc(dbRef, data)
+
+     //add factors in the form of collections to the document for the server
+
+
+      //send codes to 
+      let AllFactorText = document.querySelectorAll('.factor')
       //add any filled in factors to local storage
       for(let i = 0; i < AllFactorText.length; i++){
-        if(AllFactorText[i].value !== ""){
-          localStorage.setItem('Factor'+i, AllFactorText[i].value)
-        }
+       
+          //if the factor isnt empty then move on
+          if(AllFactorText[i].childNodes[0].value !== ""){
+              //console.log(AllFactorText[i].childNodes[0].value)
+              //add factor in the form of a collection to the server code (document)
+
+          }
+        
       }
 
 
-       // var URL = window.location.href
-        //var newURL = URL.substring(URL.length - 20)
-        //navigate('/routes/waitingRoom/'+newURL)
+       
         
-        navigate('/routes/waitingRoom/')
+
+       /*
+        navigate('/routes/HostRoom/')
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(
           <BrowserRouter>
-            <WaitingRoomHTML />
+            <HostRoomHTML />
           </BrowserRouter>,
           document.getElementById('root')
         )
+        */
         
      }
+
+
+
+
+
+
+
+
 
     return (
         <div className="App">
             
-            {/*<div id="RoomPassword">
+            <div id="RoomPassword">
                 <div id="RoomPasswordTextOnly">Room Password:</div>
-                <div id="RoomPasswordText">7787</div>
+                <div id="RoomPasswordText"></div>
                 <button id="CopyPassword"  >
                   Copy
                 </button>
-            </div>*/}
+            </div>
 
 
 
@@ -97,7 +184,7 @@ const CreateRoomHTML= () => {
 
 
             <div id="ButtonHolder-CreateRoom">
-                <button id="StartRoomBNT" onClick={GoWaitingRoom} >Start Room</button>
+                <button id="StartRoomBNT" onClick={GoHostRoom} >Start Room</button>
                 <button id='CreateRoomBackBNT' onClick={GoHomeBNT}>Back</button>
             </div>
 
