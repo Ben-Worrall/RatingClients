@@ -10,7 +10,7 @@ import addFactor from '../functions/addQuestion.js'
 import HostRoomHTML from './HostRoom.js';
 //import ClearText from '../functions/CreateRoomFunc.js'
 //import CloseFactor from '../functions/CreateRoomFunc.js'
-import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, addDoc} from 'firebase/firestore'
+import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, addDoc, getDoc} from 'firebase/firestore'
 import { txtDB } from '../firebase/firebaseConfig';
 
 
@@ -106,30 +106,45 @@ const CreateRoomHTML= () => {
 
 
      async function GoHostRoom(){
-       
+       var docId = ""
+
+
       //add server code in the form of a document
       const dbRef = collection(db, "Servers")
       const data = {
         code: Number(document.getElementById('RoomPasswordText').innerHTML)
      };
-     addDoc(dbRef, data)
+     addDoc(dbRef, data).then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+      docId = docRef.id
 
-     //add factors in the form of collections to the document for the server
+  }).then(async function (){
+//find the document that the code was saved to
+const docRef = doc(db, "Servers", docId);
+//const CurDocCode = await getDoc(docRef);//console.log(CurDocCode.data())
+//now that we have the document, add a collection for each factor
+ //send codes to 
+ let AllFactorText = document.querySelectorAll('.factor')
+ 
+ for(let i = 0; i < AllFactorText.length; i++){
+  
+     //if the factor isnt empty then move on
+     if(AllFactorText[i].childNodes[0].value !== ""){
+         //console.log(AllFactorText[i].childNodes[0].value)
+         //add factor in the form of a collection to the server code (document)
+         const colRef = collection(docRef , AllFactorText[i].childNodes[0].value)
+         addDoc(colRef, {
+          Host: "Host"
+         });
+     }
+   
+ }
 
+     
 
-      //send codes to 
-      let AllFactorText = document.querySelectorAll('.factor')
-      //add any filled in factors to local storage
-      for(let i = 0; i < AllFactorText.length; i++){
-       
-          //if the factor isnt empty then move on
-          if(AllFactorText[i].childNodes[0].value !== ""){
-              //console.log(AllFactorText[i].childNodes[0].value)
-              //add factor in the form of a collection to the server code (document)
+  })
+     
 
-          }
-        
-      }
 
 
        
