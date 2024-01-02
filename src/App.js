@@ -1,6 +1,4 @@
 
-import db from "./firebase"
-import logo from './logo.svg';
 import './App.css';
 import {  BrowserRouter as Router,
   Routes,
@@ -9,8 +7,7 @@ import {  BrowserRouter as Router,
 import JoinRoute from './routes/JoinRoom'
 import Home from './Home'
 import CreateRoomHTML from "./routes/CreateRoom";
-import {defineRoutes} from "react-router-dom"
-import storeCode from "./firebase/generateAllCodes";
+
 import HostRoomHTML from "./routes/HostRoom";
 
 //generateall the game codes

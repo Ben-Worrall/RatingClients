@@ -7,39 +7,28 @@ import { BrowserRouter } from 'react-router-dom'
 import JoinRoom from "./routes/JoinRoom";
 
 
-window.addEventListener('load', function(){
-  localStorage.clear()
-})
-
-//create a random game id 
-const makeid =(length) => {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
-}
 
 
 
 
-//create new id and store the id so can assign html to that url
-var NewWebId = makeid(20)
 
- var NewCreatedRoomUrl = NewWebId
+
+
 
  
 
 
 const Home = () => {
+  
 
   let navigate = useNavigate();
   
   async function CreateRoomURL(){
+
+   
+
+
+
      navigate('/routes/CreateRoom/')
      
     //NewCreatedRoomUrl = NewWebId
@@ -53,6 +42,7 @@ const Home = () => {
       </BrowserRouter>,
       document.getElementById('root')
     )
+    
   }
   async function JoinRoomURL(){
     navigate('/routes/JoinRoom/')
@@ -65,11 +55,12 @@ const Home = () => {
      </BrowserRouter>,
      document.getElementById('root')
    )
+   
  }
 
     return (
       
-        <div>
+        <div id="holder">
           
             
           <button className="BNT" onClick={CreateRoomURL}>CreateRoom</button>

@@ -55,35 +55,46 @@ function GenerateCode(){
 
 //generate random code from database
 
-const GetRandomCode = async () => {
 
-  GenerateCode()
-  
-  //query the random code and then get that code from the database
-
-  const querySnapshot = await getDocs(collection(db, "AvailableCodes"));
-  querySnapshot.forEach((doc) => {
-  //console.log(doc.data()[randomCode])
-  readyToUse = doc.data()[randomCode]
-  document.getElementById('RoomPasswordText').innerHTML = readyToUse
- });
-
- CurStringCode = String(readyToUse)
- //delete the code from the database after accessing it
- const deleteFields = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
- await updateDoc(deleteFields, {[CurStringCode]: deleteField()})
- 
-
-}
-
-
-GetRandomCode()
 
 
 
 
 
 const CreateRoomHTML= () => {
+
+
+
+  const GetRandomCode = async () => {
+
+    GenerateCode()
+    
+    //query the random code and then get that code from the database
+  
+    const querySnapshot = await getDocs(collection(db, "AvailableCodes"));
+    querySnapshot.forEach((doc) => {
+    //console.log(doc.data()[randomCode])
+    readyToUse = doc.data()[randomCode]
+    document.getElementById('RoomPasswordText').innerHTML = readyToUse
+   });
+  
+   CurStringCode = String(readyToUse)
+   //delete the code from the database after accessing it
+   const deleteFields = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
+   await updateDoc(deleteFields, {[CurStringCode]: deleteField()})
+   
+  
+  }
+  
+  
+  GetRandomCode()
+
+
+
+
+
+
+
 
 
   
@@ -104,10 +115,10 @@ const CreateRoomHTML= () => {
 
      //when user presses start on the "start room" button
 
-
+     var docId 
      async function GoHostRoom(){
-       var docId = ""
-
+       
+      
 
       //add server code in the form of a document
       const dbRef = collection(db, "Servers")
@@ -115,13 +126,14 @@ const CreateRoomHTML= () => {
         code: Number(document.getElementById('RoomPasswordText').innerHTML)
      };
      addDoc(dbRef, data).then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
+      
       docId = docRef.id
+      
 
   }).then(async function (){
 //find the document that the code was saved to
 const docRef = doc(db, "Servers", docId);
-//const CurDocCode = await getDoc(docRef);//console.log(CurDocCode.data())
+alert("Document written with ID: ", docId);
 //now that we have the document, add a collection for each factor
  //send codes to 
  let AllFactorText = document.querySelectorAll('.factor')
@@ -140,27 +152,33 @@ const docRef = doc(db, "Servers", docId);
    
  }
 
-     
+
+
+  }).then(function(){
+
+
+//send code to local storage
+let Code = document.getElementById('RoomPasswordText').innerText
+//send code to local storage for hostroom to access
+ localStorage.setItem('code', Code)
+
+ 
+  }).then(function(){
+
+
+    navigate('/routes/HostRoom/')
+    window.location.reload()
+
 
   })
      
 
 
-
        
         
 
-       /*
-        navigate('/routes/HostRoom/')
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(
-          <BrowserRouter>
-            <HostRoomHTML />
-          </BrowserRouter>,
-          document.getElementById('root')
-        )
-        */
+    
+        
         
      }
 
