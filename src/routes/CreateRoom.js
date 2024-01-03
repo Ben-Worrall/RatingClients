@@ -115,9 +115,9 @@ const CreateRoomHTML= () => {
 
      //when user presses start on the "start room" button
 
-     var docId 
+     
      async function GoHostRoom(){
-       
+      let docId 
       
 
       //add server code in the form of a document
@@ -128,12 +128,13 @@ const CreateRoomHTML= () => {
      addDoc(dbRef, data).then(function(docRef) {
       
       docId = docRef.id
-      
+      localStorage.setItem('DocId', docRef.id)
 
   }).then(async function (){
+
 //find the document that the code was saved to
 const docRef = doc(db, "Servers", docId);
-alert("Document written with ID: ", docId);
+
 //now that we have the document, add a collection for each factor
  //send codes to 
  let AllFactorText = document.querySelectorAll('.factor')
@@ -154,7 +155,8 @@ alert("Document written with ID: ", docId);
 
 
 
-  }).then(function(){
+  })
+  .then(function(){
 
 
 //send code to local storage
