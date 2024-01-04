@@ -17,14 +17,17 @@ import { txtDB } from '../firebase/firebaseConfig';
 const db = getFirestore()
 
 
-//if user reloads page
-window.addEventListener("beforeunload", function(e){
-  let x = document.getElementById('RoomPasswordText').innerText
-  let y = String(x)
-  let z = Number(y)
-  const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
-  updateDoc(docRef, {[y]: z})
-});
+const beforeUnloadListener = async (event) => {
+  let x = document.getElementById('RoomPasswordText')
+let y = String(x)
+let z = Number(y)
+//put the server code back
+const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
+updateDoc(docRef, {[y]: z})
+window.addEventListener("beforeunload", beforeUnloadListener);
+}
+
+window.addEventListener("beforeunload", beforeUnloadListener);
 
 
 //clear (edit factor) text 
@@ -101,6 +104,7 @@ const CreateRoomHTML= () => {
 
     let navigate = useNavigate();
     async function GoHomeBNT(){
+      window.addEventListener("beforeunload", beforeUnloadListener);
       localStorage.clear()
       navigate('/')
       window.location.reload()
@@ -140,15 +144,16 @@ const docRef = doc(db, "Servers", docId);
  let AllFactorText = document.querySelectorAll('.factor')
  
  for(let i = 0; i < AllFactorText.length; i++){
-  
+   let value = AllFactorText[i].childNodes[0].value.toString()
      //if the factor isnt empty then move on
-     if(AllFactorText[i].childNodes[0].value !== ""){
-         //console.log(AllFactorText[i].childNodes[0].value)
-         //add factor in the form of a collection to the server code (document)
-         const colRef = collection(docRef , AllFactorText[i].childNodes[0].value)
-         addDoc(colRef, {
+      if(value !== ""){
+      const colRef = collection(docRef , value)
+      await addDoc(colRef, {
           Host: "Host"
          });
+      console.log(AllFactorText.length)
+      console.log(value)
+         
      }
    
  }

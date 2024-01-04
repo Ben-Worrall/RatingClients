@@ -20,7 +20,7 @@ import JoinRoom from "./routes/JoinRoom";
 
 const Home = () => {
   
-
+  localStorage.clear()
   let navigate = useNavigate();
   
   async function CreateRoomURL(){

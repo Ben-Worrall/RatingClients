@@ -21,7 +21,21 @@ const HostRoomHTML = () => {
 
 
 
+  const beforeUnloadListener = async (event) => {
+    let x = localStorage.getItem('code')
+  let y = String(x)
+  let z = Number(y)
+  //put the server code back
+  const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
+  updateDoc(docRef, {[y]: z})
+  //delete the server from the Servers collection
+  let DocId = localStorage.getItem('DocId')
+  await deleteDoc(doc(db, "Servers", DocId))
+    localStorage.clear()
+    window.addEventListener("beforeunload", beforeUnloadListener);
+};
 
+window.addEventListener("beforeunload", beforeUnloadListener);
 
 
   
@@ -37,12 +51,9 @@ const HostRoomHTML = () => {
     async function GoHomeBNT(){ 
       
       
-       
-  //continue from GetRandomCode
-  //if user presses on home, quits the website or refreshes then get put code back in data base
- //and return to home
+      window.addEventListener("beforeunload", beforeUnloadListener);
 
- //if user goes back to home, then remove the server from the database
+  // quits the website or refreshes then get put code back in data base and delete the server
 
  //get code
  
