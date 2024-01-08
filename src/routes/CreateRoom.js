@@ -118,7 +118,7 @@ const CreateRoomHTML= () => {
 
 
      //when user presses start on the "start room" button
-
+    var factorListAr = []
      
      async function GoHostRoom(){
       let docId 
@@ -147,6 +147,8 @@ const docRef = doc(db, "Servers", docId);
    let value = AllFactorText[i].childNodes[0].value.toString()
      //if the factor isnt empty then move on
       if(value !== ""){
+        factorListAr.push(value)
+        
       const colRef = collection(docRef , value)
       await addDoc(colRef, {
           Host: "Host"
@@ -163,7 +165,8 @@ const docRef = doc(db, "Servers", docId);
   })
   .then(function(){
 
-
+//push the factors to local storage
+localStorage.setItem('factors', JSON.stringify(factorListAr))
 //send code to local storage
 let Code = document.getElementById('RoomPasswordText').innerText
 //send code to local storage for hostroom to access
