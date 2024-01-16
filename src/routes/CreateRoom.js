@@ -10,7 +10,7 @@ import addFactor from '../functions/addQuestion.js'
 import HostRoomHTML from './HostRoom.js';
 //import ClearText from '../functions/CreateRoomFunc.js'
 //import CloseFactor from '../functions/CreateRoomFunc.js'
-import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, addDoc, getDoc} from 'firebase/firestore'
+import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, addDoc, getDoc, setDoc} from 'firebase/firestore'
 import { txtDB } from '../firebase/firebaseConfig';
 
 
@@ -18,13 +18,7 @@ const db = getFirestore()
 
 
 const beforeUnloadListener = async (event) => {
-  let x = document.getElementById('RoomPasswordText')
-let y = String(x)
-let z = Number(y)
-//put the server code back
-const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
-updateDoc(docRef, {[y]: z})
-window.addEventListener("beforeunload", beforeUnloadListener);
+alert('closing')
 }
 
 window.addEventListener("beforeunload", beforeUnloadListener);
@@ -104,10 +98,37 @@ const CreateRoomHTML= () => {
 
     let navigate = useNavigate();
     async function GoHomeBNT(){
-      window.addEventListener("beforeunload", beforeUnloadListener);
-      localStorage.clear()
-      navigate('/')
-      window.location.reload()
+
+      window.removeEventListener("beforeunload", beforeUnloadListener);
+
+
+      var curCode = document.getElementById('RoomPasswordText').innerText
+      var StringCode = String(curCode)
+      var NumCode = Number(StringCode)
+      //put the server code back
+      const CurData = {[StringCode]: NumCode}
+      
+       const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
+      
+        await updateDoc(docRef, CurData)
+        //localStorage.clear()
+        
+         await navigate('/')
+          
+        
+
+
+        
+          await window.location.reload()
+       
+        
+       
+  
+      
+
+       //localStorage.clear()
+       //navigate('/')
+       //window.location.reload()
     
       
      }

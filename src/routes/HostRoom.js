@@ -22,17 +22,8 @@ const HostRoomHTML = () => {
 
 
   const beforeUnloadListener = async (event) => {
-    let x = localStorage.getItem('code')
-  let y = String(x)
-  let z = Number(y)
-  //put the server code back
-  const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
-  await updateDoc(docRef, {[y]: z})
-  //delete the server from the Servers collection
-  let DocId = localStorage.getItem('DocId')
-  await deleteDoc(doc(db, "Servers", DocId))
-    localStorage.clear()
-    window.addEventListener("beforeunload", beforeUnloadListener);
+    alert('closing')
+   
 };
 
 window.addEventListener("beforeunload", beforeUnloadListener);
