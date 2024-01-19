@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './styles/CreateRoom.css'
 import Home from "../Home";
 import ReactDOM from 'react-dom/client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import addFactor from '../functions/addQuestion.js'
 
 import HostRoomHTML from './HostRoom.js';
@@ -12,16 +12,11 @@ import HostRoomHTML from './HostRoom.js';
 //import CloseFactor from '../functions/CreateRoomFunc.js'
 import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, addDoc, getDoc, setDoc} from 'firebase/firestore'
 import { txtDB } from '../firebase/firebaseConfig';
-
+import { useBeforeunload } from 'react-beforeunload' 
 
 const db = getFirestore()
 
 
-const beforeUnloadListener = async (event) => {
-alert('closing')
-}
-
-window.addEventListener("beforeunload", beforeUnloadListener);
 
 
 //clear (edit factor) text 
@@ -59,7 +54,13 @@ function GenerateCode(){
 
 
 const CreateRoomHTML= () => {
-
+  
+  
+  
+  
+  const handleUnload = (e) => {
+    
+  };
 
 
   const GetRandomCode = async () => {
@@ -99,7 +100,7 @@ const CreateRoomHTML= () => {
     let navigate = useNavigate();
     async function GoHomeBNT(){
 
-      window.removeEventListener("beforeunload", beforeUnloadListener);
+      
 
 
       var curCode = document.getElementById('RoomPasswordText').innerText
@@ -111,7 +112,7 @@ const CreateRoomHTML= () => {
        const docRef = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
       
         await updateDoc(docRef, CurData)
-        //localStorage.clear()
+        localStorage.clear()
         
          await navigate('/')
           
