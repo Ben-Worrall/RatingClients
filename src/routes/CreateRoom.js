@@ -46,7 +46,7 @@ function GenerateCode(){
 }
 
 //generate random code from database
-
+GenerateCode()
 
 
 
@@ -58,21 +58,20 @@ const CreateRoomHTML= () => {
   
   
   
-  const handleUnload = (e) => {
-    
-  };
+  
 
 
   const GetRandomCode = async () => {
 
-    GenerateCode()
+    
     
     //query the random code and then get that code from the database
   
     const querySnapshot = await getDocs(collection(db, "AvailableCodes"));
     querySnapshot.forEach((doc) => {
-    //console.log(doc.data()[randomCode])
-    readyToUse = doc.data()[randomCode]
+    if(doc.data()[randomCode] = randomCode){
+      readyToUse = doc.data()[randomCode]
+    }
     document.getElementById('RoomPasswordText').innerHTML = readyToUse
    });
   
