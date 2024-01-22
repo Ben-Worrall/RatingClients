@@ -41,9 +41,12 @@ async function JoinRoomBNT(){
                     alert('There is no server with that code. Please check code and try agian')
                 } else {
                     //code expected to be a server and not in the databaase
-                    console.log('code in database')
+                    console.log('code in database but being used in a current server')
                     let Username = document.getElementById('JoinRoomUserName').value
                     console.log("code: " +roomcodeINPUT + " works |||", "username: " + Username )
+                    localStorage.setItem('UserName', Username)
+                    localStorage.setItem('code', roomcodeINPUT)
+
                     
                 }
                 

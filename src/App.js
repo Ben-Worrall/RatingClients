@@ -9,6 +9,7 @@ import Home from './Home'
 import CreateRoomHTML from "./routes/CreateRoom";
 import storeCode from './firebase/generateAllCodes';
 import HostRoomHTML from "./routes/HostRoom";
+import UserJoinedRoom from './routes/UserJoinedRoom';
 
 //generateall the game codes
 //storeCode()
@@ -27,7 +28,7 @@ function App() {
           <Route exact path='/routes/JoinRoom' element={<JoinRoute/>} />
           <Route exact path='/routes/CreateRoom' element={<CreateRoomHTML/>} />
           <Route exact path='/routes/HostRoom' element={<HostRoomHTML/>} />
-
+          <Route exact path='/routes/UserJoinedRoom' element={<UserJoinedRoom/>} />
           
           
 
@@ -44,3 +45,4 @@ function App() {
  
 
  export default App;
+
