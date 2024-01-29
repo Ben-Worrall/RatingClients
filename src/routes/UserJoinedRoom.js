@@ -134,9 +134,12 @@ addFactorsAuto()
         navigate('/')
         window.location.reload()
     }
-    function Submit(){
+    async function Submit(){
         
         SubmitAnswer()
+        navigate( "/routes/SuccessfullySubmitted")
+        window.location.reload()
+        
     }
 
 

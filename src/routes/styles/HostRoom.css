@@ -1,20 +1,24 @@
+
+.HostRoomApp{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #HostRoomMainDisplay{
     background-color: white;
-    height: 65vh;
-    width: 50vw;
+    width: 95%;
+    height: 70%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     
 }
 
-#ShowResultDisplay{
-    float: left;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    outline: 0.2vw black solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 #ShowResult-button{
     
@@ -25,7 +29,7 @@
     background-color: green;
     color: white;
     border-radius:  15px 15px 15px 15px;
-    font-size: 125%;
+    font-size: 150%;
     border: 0.25vh solid black;
     margin-right: 1%;
 }

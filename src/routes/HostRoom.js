@@ -117,23 +117,19 @@ window.addEventListener("beforeunload", beforeUnloadListener);
 
                  <div id='ShowResultDisplay'>
                   
-                  <div id='ShowResult-button'>
+                  
                     <button id='ShowResultBNT'>
                       Show Final Results
                     </button>
 
-                  </div>
+                
 
                  </div>
 
 
 
-                  <div id='ParticipantsDisplay'>
-                    <div id='Participant-text'>Judges</div> 
-                    <div id='ParticipantsList'>
-                    <div className='Participants-name'>Matthew</div>
-                  </div>
-                </div>
+
+                
             </div>
 
 
