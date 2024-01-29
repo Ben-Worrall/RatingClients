@@ -20,7 +20,7 @@ import { useBeforeunload } from 'react-beforeunload'
 
 const Home = () => {
   
-  localStorage.clear()
+  
   let navigate = useNavigate();
   
   async function CreateRoomURL(){

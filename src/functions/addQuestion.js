@@ -37,7 +37,6 @@ import React from "react";
         //for host to edit question
     let factorText = document.createElement('input')
     factorText.classList.add('factorText')
-    
     factorText.placeholder = "Edit Factor"
     factorText.contentEditable = "true"
     factorText.spellcheck = "false"

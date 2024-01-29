@@ -150,6 +150,14 @@ const CreateRoomHTML= () => {
       const data = {
         code: Number(document.getElementById('RoomPasswordText').innerHTML)
      };
+
+     for(let i = 0; i < document.querySelectorAll('.factor').length; i++){
+      let Factor = document.querySelectorAll('.factor')[i].childNodes[0].value.toString()
+      if(Factor !== ""){
+        data[Factor] = Factor
+      }
+      
+     }
      addDoc(dbRef, data).then(function(docRef) {
       
       docId = docRef.id

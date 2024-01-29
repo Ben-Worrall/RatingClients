@@ -7,7 +7,7 @@ import {  BrowserRouter as Router,
 import JoinRoute from './routes/JoinRoom'
 import Home from './Home'
 import CreateRoomHTML from "./routes/CreateRoom";
-import storeCode from './firebase/generateAllCodes';
+
 import HostRoomHTML from "./routes/HostRoom";
 import UserJoinedRoom from './routes/UserJoinedRoom';
 

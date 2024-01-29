@@ -9,6 +9,7 @@ import { getFirestore, updateDoc, doc, collection,getDocs, deleteField} from 'fi
 const db = getFirestore()
 
 const JoinRoom = () => {
+    
     let navigate = useNavigate();
     async function GoHomeBNT(){
         navigate('/')
@@ -46,6 +47,8 @@ async function JoinRoomBNT(){
                     console.log("code: " +roomcodeINPUT + " works |||", "username: " + Username )
                     localStorage.setItem('UserName', Username)
                     localStorage.setItem('code', roomcodeINPUT)
+                    navigate('/routes/UserJoinedRoom')
+                    window.location.reload()
 
                     
                 }
