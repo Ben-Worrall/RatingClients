@@ -15,7 +15,9 @@ const SubmitAnswer = () => {
    //get the code of the server (4)
    //connect those 3 and put them in a new doc and send to the factor collection that corresponds to the factor name in the server u are connected to
    
+   
     let AllFactors = document.querySelectorAll('.factor')
+    function SendToDB(){
     AllFactors.forEach(async (factor)=>{
 
         
@@ -47,7 +49,14 @@ const SubmitAnswer = () => {
     
 
     })
+    }  
 
+     function DirectToSuccessPAge(){
+        document.getElementById('ToSuccess').click()
+    }
+    SendToDB()
+    DirectToSuccessPAge()
+    
     
     //successfully loaded all results to server, then take user to home screen
 

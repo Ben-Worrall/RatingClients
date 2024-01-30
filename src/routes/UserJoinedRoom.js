@@ -4,7 +4,9 @@ import React from 'react';
 import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, deleteDoc, onSnapshot } from 'firebase/firestore'
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 import SubmitAnswer from '../functions/submitAnswers';
+
 const db = getFirestore()
 
 
@@ -36,8 +38,15 @@ async function addFactorsAuto(){
             const {code ,...otherProperties} = doc.data();
             const personClone = {...otherProperties};
             //console.log(personClone)
+
+
             //turn all the values (factor names) into an array to access
             let ArrOfFactors = Object.keys(personClone)
+            
+            ArrOfFactors = ArrOfFactors.sort((a,b) => a?.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}))
+
+           
+
             for(let i =0; i<ArrOfFactors.length; i++){
                  
 
@@ -137,10 +146,10 @@ addFactorsAuto()
     async function Submit(){
         
         SubmitAnswer()
-        navigate( "/routes/SuccessfullySubmitted")
-        window.location.reload()
+        
         
     }
+    
 
 
 
@@ -169,6 +178,7 @@ addFactorsAuto()
             <button id="HomeBNT" onClick={GoHome}>Home</button>
             <button id='BackBNT' onClick={GoBack}>Back</button>
             <button id='SubmitBNT' onClick={Submit}>Submit</button>
+            <NavLink to="/routes/SuccessfullySubmitted" id='ToSuccess' ></NavLink>
         </div>
 
     </div>
