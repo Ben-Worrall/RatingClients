@@ -42,7 +42,7 @@ async function addFactorsAuto(){
 
             //turn all the values (factor names) into an array to access
             let ArrOfFactors = Object.keys(personClone)
-            
+            //sort the array out in alphabetical and numerical order
             ArrOfFactors = ArrOfFactors.sort((a,b) => a?.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}))
 
            

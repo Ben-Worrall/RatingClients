@@ -8,6 +8,7 @@ import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, deleteDo
 import $ from 'jquery'
 import LOADED from '../functions/HostGetCode';
 import { useEffect } from 'react';
+import GetResult from '../functions/GetResults';
 const db = getFirestore()
 
 
@@ -28,15 +29,13 @@ const HostRoomHTML = () => {
 
 window.addEventListener("beforeunload", beforeUnloadListener);
 
-
+     //get final results
+     function ShowResults(){
+      GetResult()
+     }
   
      
-  //access local storage to get the code for the user
- 
- 
-   
-    
-    
+  //go home button  
     let navigate = useNavigate();
     
     async function GoHomeBNT(){ 
@@ -94,6 +93,8 @@ window.addEventListener("beforeunload", beforeUnloadListener);
     
     
   }
+
+
   
    
   
@@ -118,7 +119,7 @@ window.addEventListener("beforeunload", beforeUnloadListener);
                  <div id='ShowResultDisplay'>
                   
                   
-                    <button id='ShowResultBNT'>
+                    <button id='ShowResultBNT' onClick={ShowResults}>
                       Show Final Results
                     </button>
 

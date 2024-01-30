@@ -41,7 +41,8 @@ const SubmitAnswer = () => {
                 var CurFactorCol = collection(db,'Servers/' + doc.id + '/'+ factor.children[0].innerText);
                 // 3rd step is to add a new doc to that collection we accessed, with the data from (2) and (3)
                 await addDoc(CurFactorCol, {
-                    [localStorage.getItem('UserName')]: FactorVal
+                    Rating: FactorVal,
+                    Username: localStorage.getItem('UserName')
                    });
 
             }
