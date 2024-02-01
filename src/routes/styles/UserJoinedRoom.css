@@ -6,7 +6,14 @@
     height: 100vh;
     position: absolute;
 }
-
+#UserRatingRoom{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #CreateRoomBackBNT{
     width: max-content;
     height: max-content;
@@ -57,7 +64,7 @@
     margin: 1%;
 }
 .factorText{
-    width: 55%;
+    width: 50%;
     float: left;
     text-align: center;
     display: flex;
@@ -72,7 +79,7 @@
 
 }
 .factorRating{
-    width: 40%;
+    width: 50%;
     float: right;
     text-align: center;
     display: flex;
@@ -99,21 +106,69 @@
 .slash{
     margin-right: 5%;
 }
-.DelFactorHolder{
-    height: 100%;
-    display: flex;
-    align-items: start;
-}
-.DelFactor{
+
+
+
+
+.UserNoteBNT{
     position: relative;
-   float: right;
-   font-size: 100%;
-   background-color: red;
-   color:white;
-   border: 0px solid transparent;
-
-
+    float: right;
+    margin-top: 0;
+    background-color: lightgray;
+    color: black;
+    outline: 0.1vw black solid;
+    font-size: 50%;
+    border: 0vw solid black;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    
 }
+
+/*  make overlat for when user presses details  */
+.UserNoteContent_overlay {
+    
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .60;
+    filter: alpha(opacity=60);
+  }
+  .UserNoteContent {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    padding: 16px;
+    background-color: white;
+    z-index: 10010;
+    overflow-y: auto;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

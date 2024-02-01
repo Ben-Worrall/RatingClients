@@ -94,7 +94,56 @@ async function addFactorsAuto(){
              div3.contentEditable = "false"
              factorRating.appendChild(div3)
          
+
+
+             //for the note button
+             let div4 = document.createElement('button')
+             div4.classList.add('UserNoteBNT')
+             div4.innerText = "Notes"
+             div4.spellcheck = "false"
+             div4.contentEditable = "false"
+             div4.onclick = ShowNoteContent
+             factorRating.appendChild(div4)
+
+
+             //for the notes (inside note button)
+             let div5 = document.createElement('div')
+             div5.classList.add('UserNoteContent')
+             div5.contentEditable = "true"
+             div5.style.textAlign = "left"
              
+         
+         
+             //for the blacvk overlay of the notes
+             let div6 = document.createElement('div')
+             div6.classList.add('UserNoteContent_overlay')
+             div6.onclick = BlackClick
+
+
+
+             function ShowNoteContent(){
+    
+    
+                document.getElementById('UserRatingRoom').appendChild(div6)
+                document.getElementById('UserRatingRoom').appendChild(div5)
+              }
+
+
+             //when user clicks on the black overlay, then close the details div
+             function BlackClick(){
+               document.querySelector('.UserNoteContent_overlay').remove()
+               document.querySelector('.UserNoteContent').remove()
+             }
+
+
+
+
+
+
+
+
+
+
           
          
          
@@ -159,6 +208,7 @@ addFactorsAuto()
 
     return (
         <div className="App">
+            <div id='UserRatingRoom'>
             
         <div id="RoomPassword">
             <div id="RoomPasswordTextOnly">Room Password:</div>
@@ -179,6 +229,7 @@ addFactorsAuto()
             <button id='BackBNT' onClick={GoBack}>Back</button>
             <button id='SubmitBNT' onClick={Submit}>Submit</button>
             <NavLink to="/routes/SuccessfullySubmitted" id='ToSuccess' ></NavLink>
+        </div>
         </div>
 
     </div>
