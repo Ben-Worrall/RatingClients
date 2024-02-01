@@ -9,12 +9,24 @@ const GetResult = () => {
   
   
  //get factors
+
+
  let factors = JSON.parse(localStorage.getItem('factors'))
  //sort factors into right order
  factors = factors.sort((a,b) => a?.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}))
 
 
   //for each factor
+
+
+
+
+
+
+
+
+
+
   factors.forEach(async (SubColId) => {
 
   //create the display for the factors and their ratings
@@ -23,22 +35,22 @@ const GetResult = () => {
     document.getElementById('ShowResultBNT').style.display = "none"
     //add factor results for each factor
     let factor = document.createElement('div')
-    factor.classList.add('factor')
+    factor.classList.add('Resultfactor')
              
   //the question that the host
   let factorText = document.createElement('div')
-  factorText.classList.add('factorText')
+  factorText.classList.add('ResultfactorText')
   factorText.innerText = SubColId
   factorText.spellcheck = "false"
   
   //for the the rating
   let factorRating = document.createElement('div')
-  factorRating.classList.add('factorRating')
+  factorRating.classList.add('ResultfactorRating')
   
   
   //tallied up all the ratings for each factor
   let div1 = document.createElement('div')
-  div1.classList.add('ratingFor')
+  div1.classList.add('ResultratingFor')
   //div1.innerText 
   factorRating.appendChild(div1)
   
@@ -48,18 +60,68 @@ const GetResult = () => {
   
   //just a slash
   let div2 = document.createElement('div')
-  div2.classList.add('slash')
+  div2.classList.add('Resultslash')
   div2.innerText = "/"
   factorRating.appendChild(div2)
   
   
   // what the rating is out of (10) can make host edit it later maybe
   let div3 = document.createElement('div')
-  div3.classList.add('ratingOutOf')
+  div3.classList.add('ResultratingOutOf')
   div3.innerText = "10"
   div3.spellcheck = "false"
   div3.contentEditable = "false"
   factorRating.appendChild(div3)
+
+  //for the details button
+  let div4 = document.createElement('button')
+  div4.classList.add('ResultDetailBnt')
+  div4.innerText = "Details"
+  div4.spellcheck = "false"
+  div4.contentEditable = "false"
+  div4.onclick = ShowDetails
+  factorRating.appendChild(div4)
+
+
+  //for the notes (inside detials)
+  let div5 = document.createElement('div')
+  div5.classList.add('white_content')
+  div5.innerText = "Test 1 2 3"
+  
+
+
+  //for the blacvk overlay of the notes
+  let div6 = document.createElement('div')
+  div6.classList.add('black_overlay')
+  div6.onclick = BlackClick
+  
+
+
+
+
+
+  
+  function ShowDetails(){
+    
+    
+    document.getElementById('HostRoomMainDisplay').appendChild(div6)
+    document.getElementById('HostRoomMainDisplay').appendChild(div5)
+  }
+
+
+  //when user clicks on the black overlay, then close the details div
+  function BlackClick(){
+    document.querySelector('.black_overlay').remove()
+    document.querySelector('.white_content').remove()
+  }
+
+
+
+
+
+
+
+
 
 
 

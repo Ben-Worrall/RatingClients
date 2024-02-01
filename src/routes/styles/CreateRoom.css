@@ -70,7 +70,7 @@
     margin: 1%;
 }
 .factorText{
-    width: 65%;
+    width: 55%;
     float: left;
     text-align: center;
     display: flex;
@@ -85,7 +85,7 @@
 
 }
 .factorRating{
-    width: 40%;
+    width: 45%;
     float: right;
     text-align: center;
     display: flex;

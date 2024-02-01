@@ -98,4 +98,91 @@
 }
 
 
+.Resultfactor{
+    outline: 0.25vh solid black;
+    width: 48%;
+    height: 12.5%;
+    float: left;
+    text-align: center;
+    display: flex;
+    
+    align-items: center;
+    margin: 1%;
+}
+.ResultfactorText{
+    width: 50%;
+    float: left;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0vh solid black;
+    border-right: 0.25vh solid black;
+    overflow-X: auto;
+    height: max-content;
+    font-size: 200%;
+    outline: 0px solid transparent;
+
+}
+.ResultfactorRating{
+    width: 50%;
+    float: right;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
+    font-size: 200%;
+    
+}
+.ResultratingOutOf{
+    outline: 0px solid transparent;
+    width:40%;
+}
+.ResultratingFor{
+    width: 33%;
+}
+.Resultslash{
+    margin-right: 5%;
+}
+
+.ResultDetailBnt{
+    position: relative;
+    float: right;
+    margin-top: 0;
+    background-color: lightgray;
+    color: black;
+    outline: 0.1vw black solid;
+    font-size: 50%;
+    border: 0vw solid black;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    
+}
+
+/*  make overlat for when user presses details  */
+.black_overlay {
+    
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .60;
+    filter: alpha(opacity=60);
+  }
+  .white_content {
+    
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    padding: 16px;
+    
+    background-color: white;
+    z-index: 10010;
+    overflow-y: auto;
+  }
 

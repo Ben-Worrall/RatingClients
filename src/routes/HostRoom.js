@@ -2,6 +2,7 @@ import {useNavigate} from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/HostRoom.css'
 import Home from '../Home';
+
 import ReactDOM from 'react-dom/client'
 import { txtDB } from '../firebase/firebaseConfig';
 import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, deleteDoc, onSnapshot } from 'firebase/firestore'
@@ -100,7 +101,7 @@ window.addEventListener("beforeunload", beforeUnloadListener);
   
     return(
        
-        <div className='HostRoomApp' >
+        <div className='HostRoomApp' id='HostRoomApp' >
 
          
          {/*  display room code  */}
