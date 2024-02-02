@@ -13,11 +13,11 @@ const GetResult = () => {
 
  let factors = JSON.parse(localStorage.getItem('factors'))
  //sort factors into right order
+
  factors = factors.sort((a,b) => a?.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}))
 
 
-  //for each factor
-
+  
 
 
 
@@ -79,14 +79,16 @@ const GetResult = () => {
   div4.innerText = "Details"
   div4.spellcheck = "false"
   div4.contentEditable = "false"
-  div4.onclick = ShowDetails
+  div4.addEventListener('click', function(){
+    ShowDetails()
+  })
   factorRating.appendChild(div4)
 
 
   //for the notes (inside detials)
   let div5 = document.createElement('div')
   div5.classList.add('white_content')
-  div5.innerText = "Test 1 2 3"
+  div5.innerText = ""
   
 
 
@@ -101,11 +103,61 @@ const GetResult = () => {
 
 
   
-  function ShowDetails(){
+  async function ShowDetails(){
+    div5.innerHTML = ""
+    //get the details according to which factor was pressed
+   
+    //get factor name of which button was pressed
+    //console.log(button.parentNode.parentNode.firstChild.innerText)
     
     
-    document.getElementById('HostRoomMainDisplay').appendChild(div6)
+     //get collection of the factor 
+  // 1st step is to access the doc that matches the code
+  const colRef = collection(db, "Servers");
+  const docsSnap = await getDocs(colRef);
+  //search through and find the doc with the code
+  docsSnap.forEach(async doc => {
+     
+   //find and establish the doc of the server u made
+   if(doc.data().code == localStorage.getItem('code')){
+
+    
+    // 2nd step is to access sub collection with id of the doc that matches the code
+    var CurFactorCol = collection(db,'Servers/' + doc.id + '/'+ SubColId);
+    //search through the docs of the collection but pass through the host document
+    let SubDocs = await getDocs(CurFactorCol)
+    //look through the documents
+     SubDocs.forEach(async subDoc => {
+       //skip over the host doc
+       if(!subDoc.data().Host){
+        
+        
+        div5.innerHTML +=(`<div id="UsernameText">${subDoc.data().Username}</div>`)
+        div5.innerHTML +=(`<div id="RatingText">${subDoc.data().Rating}</div>`)
+        
+
+
+       }
+
+     })
+
+
+
+
+
+   }
+
+  })
+
+
+    
+    //then append them to div5 (the notes sheet)
+
+    
+    //append the details 
+    
     document.getElementById('HostRoomMainDisplay').appendChild(div5)
+    document.getElementById('HostRoomMainDisplay').appendChild(div6)
   }
 
 

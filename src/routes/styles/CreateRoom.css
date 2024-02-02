@@ -78,7 +78,7 @@
     justify-content: center;
     border: 0vh solid black;
     border-right: 0.25vh solid black;
-    overflow-X: scroll;
+    overflow-X: auto;
     height: max-content;
     font-size: 200%;
     outline: 0px solid transparent;

@@ -73,6 +73,7 @@ const CreateRoomHTML= () => {
       readyToUse = doc.data()[randomCode]
     }
     document.getElementById('RoomPasswordText').innerHTML = readyToUse
+   
    });
   
    CurStringCode = String(readyToUse)
@@ -171,7 +172,10 @@ const docRef = doc(db, "Servers", docId);
 //now that we have the document, add a collection for each factor
  //send codes to 
  let AllFactorText = document.querySelectorAll('.factor')
- 
+
+
+
+
  for(let i = 0; i < AllFactorText.length; i++){
    let value = AllFactorText[i].childNodes[0].value.toString()
      //if the factor isnt empty then move on

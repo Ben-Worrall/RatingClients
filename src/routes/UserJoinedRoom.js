@@ -46,10 +46,10 @@ async function addFactorsAuto(){
             ArrOfFactors = ArrOfFactors.sort((a,b) => a?.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}))
 
            
-
+              //for each factor
             for(let i =0; i<ArrOfFactors.length; i++){
                  
-
+              
 
                 //for each factor
                 //add it to the users page for him/her to rate
@@ -131,6 +131,10 @@ async function addFactorsAuto(){
 
              //when user clicks on the black overlay, then close the details div
              function BlackClick(){
+                //first save the notes to that certain factor
+
+
+                //then remove the factors
                document.querySelector('.UserNoteContent_overlay').remove()
                document.querySelector('.UserNoteContent').remove()
              }

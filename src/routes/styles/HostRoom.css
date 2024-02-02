@@ -184,5 +184,17 @@
     background-color: white;
     z-index: 10010;
     overflow-y: auto;
+    display: block;
   }
 
+#UsernameText{
+    width: 50%;
+    float: left;
+    outline: 0.1vw black solid;
+}
+#RatingText{
+    width: 50%;
+    float: right;
+    outline: 0.1vw black solid;
+
+}
