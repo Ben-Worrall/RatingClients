@@ -28,6 +28,7 @@ const GetResult = () => {
 
 
   factors.forEach(async (SubColId) => {
+   
 
   //create the display for the factors and their ratings
 
@@ -85,17 +86,30 @@ const GetResult = () => {
   factorRating.appendChild(div4)
 
 
-  //for the notes (inside detials)
+  //for the details 
   let div5 = document.createElement('div')
   div5.classList.add('white_content')
   div5.innerText = ""
   
 
 
-  //for the blacvk overlay of the notes
+  //for the blacvk overlay of the details
   let div6 = document.createElement('div')
   div6.classList.add('black_overlay')
   div6.onclick = BlackClick
+
+
+  //for the details 
+  let div7 = document.createElement('div')
+  div5.classList.add('white_content_NOTES')
+  div5.innerText = ""
+  
+
+
+  //for the blacvk overlay of the details
+  let div8 = document.createElement('div')
+  div8.classList.add('black_overlay_NOTES')
+  div8.onclick = BlackClickNotes
   
 
 
@@ -130,14 +144,26 @@ const GetResult = () => {
      SubDocs.forEach(async subDoc => {
        //skip over the host doc
        if(!subDoc.data().Host){
-        
              //div4.onclick = ShowNoteContent
-        
+          
         div5.innerHTML +=(`<div id="UsernameText">${subDoc.data().Username}</div>`)
         div5.innerHTML +=(`<div id="RatingText">${subDoc.data().Rating}</div>`)
-        div5.innerHTML +=(`<button class="NotesBNTResults">Notes</button>`)
+        div5.innerHTML +=(`<button id="${"NoteBNT" + subDoc.data().Username + "_" + SubColId}" class="NotesBNTResults">Notes</button>`)
+
+        //add function for each notebnt
+        //document.getElementById("NoteBNT" + subDoc.data().Username + "_" + SubColId).onclick = function(){
+           //document.getElementById(subDoc.data().Username + "_" + SubColId).style.display = ""
+           //console.log('test')
+        //}
         
 
+        //create a div for the notes for each factor and each user
+        let CurNoteDiv = document.createElement('div')
+        CurNoteDiv.id = subDoc.data().Username + "_" + SubColId
+        CurNoteDiv.style.display = "none"
+        CurNoteDiv.classList = "NotesClassListHost"
+        CurNoteDiv.innerText = subDoc.data().Notes
+        document.getElementById('HostRoomMainDisplay').appendChild(CurNoteDiv)
 
        }
 
@@ -163,10 +189,32 @@ const GetResult = () => {
   }
 
 
+
+
+
+
+
+
+
+
   //when user clicks on the black overlay, then close the details div
   function BlackClick(){
     document.querySelector('.black_overlay').remove()
     document.querySelector('.white_content').remove()
+    const Noteboxes = document.querySelectorAll('.NotesClassListHost');
+    Noteboxes.forEach(note => {
+      note.remove();
+    });
+  }
+  //when user clicks on the black overlay, then close the details div
+  function BlackClickNotes(){
+    document.getElementById('HostRoomMainDisplay').appendChild(div6)
+    document.querySelector('.black_overlay_NOTES').remove()
+    document.querySelector('.NotesClassListHost').remove()
+    const Noteboxes = document.querySelectorAll('.NotesClassListHost');
+    Noteboxes.forEach(note => {
+      note.remove();
+    });
   }
 
 
