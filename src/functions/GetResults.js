@@ -95,22 +95,25 @@ const GetResult = () => {
 
   //for the blacvk overlay of the details
   let div6 = document.createElement('div')
-  div6.classList.add('black_overlay')
+  div6.id=('black_overlay')
   div6.onclick = BlackClick
-
+  div6.style.display = "none"
+  document.getElementById('HostRoomMainDisplay').appendChild(div6)
 
   //for the details 
   let div7 = document.createElement('div')
-  div5.classList.add('white_content_NOTES')
-  div5.innerText = ""
+  div7.classList.add('white_content_NOTES')
+  div7.innerText = ""
   
 
 
   //for the blacvk overlay of the details
   let div8 = document.createElement('div')
-  div8.classList.add('black_overlay_NOTES')
+  div8.id=('black_overlay_NOTES')
   div8.onclick = BlackClickNotes
-  
+  div8.style.display = "none"
+
+  document.getElementById('HostRoomMainDisplay').appendChild(div8)
 
 
 
@@ -148,16 +151,20 @@ const GetResult = () => {
           
         div5.innerHTML +=(`<div id="UsernameText">${subDoc.data().Username}</div>`)
         div5.innerHTML +=(`<div id="RatingText">${subDoc.data().Rating}</div>`)
-        div5.innerHTML +=(`<button id="${"NoteBNT" + subDoc.data().Username + "_" + SubColId}" class="NotesBNTResults">Notes</button>`)
 
-        //add function for each notebnt
-        //document.getElementById("NoteBNT" + subDoc.data().Username + "_" + SubColId).onclick = function(){
-           //document.getElementById(subDoc.data().Username + "_" + SubColId).style.display = ""
-           //console.log('test')
-        //}
+        div5.innerHTML +=(
+          `<button value="${ subDoc.data().Username + "_" + SubColId}" 
+          class="NotesBNTResults">
+          Notes
+          </button>`
+          )
+        
+        
+        //document.getElementById(subDoc.data().Username + "_" + SubColId).style.display = "block"
         
 
-        //create a div for the notes for each factor and each user
+
+        //create a div for the notes for cur factor and each user
         let CurNoteDiv = document.createElement('div')
         CurNoteDiv.id = subDoc.data().Username + "_" + SubColId
         CurNoteDiv.style.display = "none"
@@ -168,8 +175,9 @@ const GetResult = () => {
        }
 
      })
-
-
+     
+     
+     
 
 
 
@@ -185,7 +193,7 @@ const GetResult = () => {
     //append the details 
     
     document.getElementById('HostRoomMainDisplay').appendChild(div5)
-    document.getElementById('HostRoomMainDisplay').appendChild(div6)
+    div6.style.display = ""
   }
 
 
@@ -199,8 +207,8 @@ const GetResult = () => {
 
   //when user clicks on the black overlay, then close the details div
   function BlackClick(){
-    document.querySelector('.black_overlay').remove()
-    document.querySelector('.white_content').remove()
+    document.querySelectorAll('#black_overlay').forEach((ov)=>{ov.style.display = "none"})
+    document.querySelectorAll('.white_content').forEach((ov)=>{ov.remove()})
     const Noteboxes = document.querySelectorAll('.NotesClassListHost');
     Noteboxes.forEach(note => {
       note.remove();
@@ -208,9 +216,10 @@ const GetResult = () => {
   }
   //when user clicks on the black overlay, then close the details div
   function BlackClickNotes(){
-    document.getElementById('HostRoomMainDisplay').appendChild(div6)
-    document.querySelector('.black_overlay_NOTES').remove()
-    document.querySelector('.NotesClassListHost').remove()
+    
+    document.querySelectorAll('#black_overlay_NOTES').forEach((ov)=>{ov.style.display = "none"})
+    document.querySelector('#black_overlay').style.display = ""
+    
     const Noteboxes = document.querySelectorAll('.NotesClassListHost');
     Noteboxes.forEach(note => {
       note.remove();
@@ -279,7 +288,22 @@ const GetResult = () => {
 
      
     
+//for notes buttons
+//display the notes according to the corresponding ids
+var wrapper = document.getElementById("HostRoomMainDisplay")
 
+wrapper.addEventListener("click", function(ev){
+  var btn_option = document.getElementsByClassName("NotesBNTResults");
+  Object.keys(btn_option).forEach(function(key){
+    if(ev.target == btn_option[key]){
+      console.log(btn_option[key].getAttribute("value"))
+      document.getElementById(btn_option[key].getAttribute("value")).style.display = ""
+      document.getElementById('black_overlay_NOTES').style.display = ""
+      document.getElementById('black_overlay').style.display = "none"
+     
+    }
+  })
+})
     
     
     

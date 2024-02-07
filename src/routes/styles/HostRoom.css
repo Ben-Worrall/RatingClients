@@ -161,7 +161,7 @@
 }
 
 /*  make overlat for when user presses details  */
-.black_overlay {
+#black_overlay {
     
     position: absolute;
     top: 0%;
@@ -201,7 +201,7 @@
 .NotesBNTResults{
     width: 10%;
     float: right;
-    outline: 0.1vw black solid;
+    
 }
 .NotesClassListHost{
     position: absolute;
@@ -213,4 +213,16 @@
     z-index: 10010;
     overflow-y: auto;
     display: block;
+}
+#black_overlay_NOTES{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .70;
+    filter: alpha(opacity=70);
 }
