@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import SubmitAnswer from '../functions/submitAnswers';
+import Success from './SuccessfullySubmitted';
 
 const db = getFirestore()
 
@@ -111,21 +112,23 @@ async function addFactorsAuto(){
              div5.classList.add('UserNoteContent')
              div5.contentEditable = "true"
              div5.style.textAlign = "left"
-             
+             div5.id = "NoteText"+ArrOfFactors[i]
          
          
              //for the blacvk overlay of the notes
              let div6 = document.createElement('div')
              div6.classList.add('UserNoteContent_overlay')
              div6.onclick = BlackClick
-
+             div6.id = "OverlayForNote"+ArrOfFactors[i]
 
 
              function ShowNoteContent(){
     
-    
+            //show the factors
                 document.getElementById('UserRatingRoom').appendChild(div6)
                 document.getElementById('UserRatingRoom').appendChild(div5)
+                document.getElementById("NoteText"+ArrOfFactors[i]).style.display = ""
+                document.getElementById("OverlayForNote"+ArrOfFactors[i]).style.display = ""
               }
 
 
@@ -135,8 +138,8 @@ async function addFactorsAuto(){
 
 
                 //then remove the factors
-               document.querySelector('.UserNoteContent_overlay').remove()
-               document.querySelector('.UserNoteContent').remove()
+               document.getElementById("NoteText"+ArrOfFactors[i]).style.display = "none"
+               document.getElementById("OverlayForNote"+ArrOfFactors[i]).style.display = "none"
              }
 
 
@@ -196,11 +199,18 @@ addFactorsAuto()
         navigate('/')
         window.location.reload()
     }
+    function toSuccess(){
+        navigate('/routes/SuccessfullySubmitted')
+        window.location.reload()
+    }
+
     async function Submit(){
         
+        //SubmitAnswer()
         SubmitAnswer()
         
-        
+      
+
     }
     
 
@@ -232,7 +242,7 @@ addFactorsAuto()
             <button id="HomeBNT" onClick={GoHome}>Home</button>
             <button id='BackBNT' onClick={GoBack}>Back</button>
             <button id='SubmitBNT' onClick={Submit}>Submit</button>
-            <NavLink to="/routes/SuccessfullySubmitted" id='ToSuccess' ></NavLink>
+            <button  id='ToSuccess' onClick={toSuccess} ></button>
         </div>
         </div>
 

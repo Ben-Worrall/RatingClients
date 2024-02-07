@@ -188,13 +188,18 @@
   }
 
 #UsernameText{
-    width: 50%;
+    width: 45%;
     float: left;
     outline: 0.1vw black solid;
 }
 #RatingText{
-    width: 50%;
-    float: right;
+    width: 45%;
+    float: left;
     outline: 0.1vw black solid;
 
+}
+.NotesBNTResults{
+    width: 10%;
+    float: right;
+    outline: 0.1vw black solid;
 }

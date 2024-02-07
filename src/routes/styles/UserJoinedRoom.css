@@ -300,3 +300,6 @@
     margin-left: 1%;
     user-select: none;
 }
+#ToSuccess{
+    display: none;
+}

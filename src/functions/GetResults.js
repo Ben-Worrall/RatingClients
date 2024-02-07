@@ -131,9 +131,11 @@ const GetResult = () => {
        //skip over the host doc
        if(!subDoc.data().Host){
         
+             //div4.onclick = ShowNoteContent
         
         div5.innerHTML +=(`<div id="UsernameText">${subDoc.data().Username}</div>`)
         div5.innerHTML +=(`<div id="RatingText">${subDoc.data().Rating}</div>`)
+        div5.innerHTML +=(`<button class="NotesBNTResults">Notes</button>`)
         
 
 
