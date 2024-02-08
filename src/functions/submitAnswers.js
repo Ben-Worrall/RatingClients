@@ -29,7 +29,7 @@ const SubmitAnswer = async () => {
 
     
      async function asyncFunction(factor, resolve){
-        console.log(document.getElementById("NoteText"+factor.children[0].innerText).innerText)
+        //console.log(document.getElementById("NoteText"+factor.children[0].innerText).innerText)
         
         // (1)   factor.children[0].innerText
         // (2)   factor.children[1].children[0].value
@@ -51,15 +51,26 @@ const SubmitAnswer = async () => {
                 // 2nd step is to access sub collection with id of (1)
                 var CurFactorCol = collection(db,'Servers/' + doc.id + '/'+ factor.children[0].innerText);
                 let CurFac = factor.children[0].innerText
-                let NoteText = document.getElementById("NoteText"+CurFac).innerText
-                // 3rd step is to add a new doc to that collection we accessed, with the data from (2) and (3)
-                //alert(document.getElementById("NoteText"+factor.children[0].innerText).innerText)
-                await addDoc(CurFactorCol, {
-                    Notes: NoteText,
-                    Rating: FactorVal,
-                    Username: localStorage.getItem('UserName')
+                if((document.getElementById("NoteText"+CurFac))){
                     
-                });
+                    await addDoc(CurFactorCol, {
+                        Notes: document.getElementById("NoteText"+CurFac).innerText,
+                        Rating: FactorVal,
+                        Username: localStorage.getItem('UserName')
+                        
+                    });
+                } else if(!document.getElementById("NoteText"+CurFac)){
+                    await addDoc(CurFactorCol, {
+                        Notes: "No Notes",
+                        Rating: FactorVal,
+                        Username: localStorage.getItem('UserName')
+                        
+                    });
+                }
+                
+                
+                // 3rd step is to add a new doc to that collection we accessed, with the data from (2) and (3)
+                
 
                 
             }

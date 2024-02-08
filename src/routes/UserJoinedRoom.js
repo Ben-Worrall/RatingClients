@@ -113,6 +113,7 @@ async function addFactorsAuto(){
              div5.contentEditable = "true"
              div5.style.textAlign = "left"
              div5.id = "NoteText"+ArrOfFactors[i]
+             div5.innerHTML += '&nbsp;'
          
          
              //for the blacvk overlay of the notes

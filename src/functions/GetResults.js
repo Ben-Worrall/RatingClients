@@ -17,7 +17,63 @@ const GetResult = () => {
  factors = factors.sort((a,b) => a?.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'}))
 
 
+
+
+
+
+ //for the details 
+ let div5 = document.createElement('div')
+ div5.id = ('white_content')
+ div5.innerText = ""
+ 
+
+
+ //for the black overlay of the details
+ let div6 = document.createElement('div')
+ div6.id=('black_overlay')
+ div6.onclick = BlackClick
+ div6.style.display = "none"
+ 
+
+
+ 
+
+
+ //for the blacvk overlay of the details
+ let div7 = document.createElement('div')
+ div7.id=('black_overlay_NOTES')
+ div7.onclick = BlackClickNotes
+ div7.style.display = "none"
+
+
+
+
+//when user clicks on the black overlay, then close the details div
+function BlackClick(){
+
+  //hide the black details overlay
+  document.getElementById('black_overlay').style.display = "none"
+  //remove the details page
+  document.getElementById('white_content').remove()
+  ////remove the note divs
+  document.querySelectorAll('.NotesClassListHost').forEach((noteDiv)=>{
+    noteDiv.remove()
+  })
   
+}
+//when user clicks on the black overlay, then close the notes div and the black overlay and show the details page and the details blackovelay
+function BlackClickNotes(){
+  //show the details balck overlay
+  document.getElementById('black_overlay').style.display = "block"
+    //hide the black notes overlay
+    document.getElementById('black_overlay_NOTES').style.display = "none"
+   
+    //hide the notes
+    document.querySelectorAll('.NotesClassListHost').forEach((noteDiv)=>{
+      noteDiv.style.display = "none"
+    })
+  
+}
 
 
 
@@ -25,6 +81,9 @@ const GetResult = () => {
 
 
 
+
+
+  //for each factor, add the buttons, factors, etc
 
 
   factors.forEach(async (SubColId) => {
@@ -86,34 +145,9 @@ const GetResult = () => {
   factorRating.appendChild(div4)
 
 
-  //for the details 
-  let div5 = document.createElement('div')
-  div5.classList.add('white_content')
-  div5.innerText = ""
   
 
-
-  //for the blacvk overlay of the details
-  let div6 = document.createElement('div')
-  div6.id=('black_overlay')
-  div6.onclick = BlackClick
-  div6.style.display = "none"
-  document.getElementById('HostRoomMainDisplay').appendChild(div6)
-
-  //for the details 
-  let div7 = document.createElement('div')
-  div7.classList.add('white_content_NOTES')
-  div7.innerText = ""
   
-
-
-  //for the blacvk overlay of the details
-  let div8 = document.createElement('div')
-  div8.id=('black_overlay_NOTES')
-  div8.onclick = BlackClickNotes
-  div8.style.display = "none"
-
-  document.getElementById('HostRoomMainDisplay').appendChild(div8)
 
 
 
@@ -202,40 +236,6 @@ const GetResult = () => {
 
 
 
-
-
-
-  //when user clicks on the black overlay, then close the details div
-  function BlackClick(){
-    document.querySelectorAll('#black_overlay').forEach((ov)=>{ov.style.display = "none"})
-    document.querySelectorAll('.white_content').forEach((ov)=>{ov.remove()})
-    const Noteboxes = document.querySelectorAll('.NotesClassListHost');
-    Noteboxes.forEach(note => {
-      note.remove();
-    });
-  }
-  //when user clicks on the black overlay, then close the details div
-  function BlackClickNotes(){
-    
-    document.querySelectorAll('#black_overlay_NOTES').forEach((ov)=>{ov.style.display = "none"})
-    document.querySelector('#black_overlay').style.display = ""
-    
-    const Noteboxes = document.querySelectorAll('.NotesClassListHost');
-    Noteboxes.forEach(note => {
-      note.remove();
-    });
-  }
-
-
-
-
-
-
-
-
-
-
-
      //now that it has been established
      //access teh sub collections to get the data
      
@@ -285,6 +285,8 @@ const GetResult = () => {
 
   })
 
+  document.getElementById('HostRoomMainDisplay').appendChild(div6)
+  document.getElementById('HostRoomMainDisplay').appendChild(div7)
 
      
     
@@ -297,8 +299,8 @@ wrapper.addEventListener("click", function(ev){
   Object.keys(btn_option).forEach(function(key){
     if(ev.target == btn_option[key]){
       console.log(btn_option[key].getAttribute("value"))
-      document.getElementById(btn_option[key].getAttribute("value")).style.display = ""
-      document.getElementById('black_overlay_NOTES').style.display = ""
+      document.getElementById(btn_option[key].getAttribute("value")).style.display = "block"
+      document.getElementById('black_overlay_NOTES').style.display = "block"
       document.getElementById('black_overlay').style.display = "none"
      
     }

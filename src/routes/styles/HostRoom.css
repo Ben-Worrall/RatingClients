@@ -174,7 +174,7 @@
     opacity: .60;
     filter: alpha(opacity=60);
   }
-  .white_content {
+  #white_content {
     
     position: absolute;
     width: 50%;
