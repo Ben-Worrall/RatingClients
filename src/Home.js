@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom'
 import JoinRoom from "./routes/JoinRoom";
 import { useBeforeunload } from 'react-beforeunload'
+import { getFirestore, updateDoc, doc, collection,getDocs, deleteField, addDoc, getDoc, setDoc} from 'firebase/firestore'
 
-
-
+const db = getFirestore()
 
 
 
@@ -23,27 +23,66 @@ const Home = () => {
   
   let navigate = useNavigate();
   
+
+
+  //create room button function
   async function CreateRoomURL(){
 
-   
 
 
+   //generate random code
 
-     navigate('/routes/CreateRoom/')
-     
-    //NewCreatedRoomUrl = NewWebId
-    //NewWebId = makeid(20)
-    //navigate('/routes/CreateRoom/'+NewWebId)
+var randomCode 
+var readyToUse
+var CurStringCode
+function GenerateCode(){
+  //randomCode = Math.floor(1000 + Math.random() * 9000)
+  randomCode = 1000
+}
+
+//generate random code from database
+GenerateCode()
+const GetRandomCode = async () => {
+
     
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-      <BrowserRouter>
-        <CreateRoomHTML />
-      </BrowserRouter>,
-      document.getElementById('root')
-    )
     
+  //query the random code and then get that code from the database
+
+  const querySnapshot = await getDocs(collection(db, "AvailableCodes"));
+  querySnapshot.forEach((doc) => {
+  if(doc.data()[randomCode] = randomCode){
+    readyToUse = doc.data()[randomCode]
   }
+  localStorage.setItem('code', readyToUse)
+ 
+ });
+
+ CurStringCode = String(readyToUse)
+ //delete the code from the database after accessing it
+ const deleteFields = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
+ await updateDoc(deleteFields, {[CurStringCode]: deleteField()})
+ 
+
+}
+
+
+GetRandomCode()
+
+setTimeout(navigate('/routes/CreateRoom/'), 2000)
+setTimeout(function(){const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <CreateRoomHTML />
+  </BrowserRouter>,
+  document.getElementById('root')
+)}, 2050)
+
+
+
+
+  }
+
+  
   async function JoinRoomURL(){
     navigate('/routes/JoinRoom/')
    

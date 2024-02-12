@@ -18,7 +18,7 @@
 }
 #JoinRoomBNT{
     width: 55%;
-    height: 10vh;
+    height: 12vh;
     border-radius:  15px 15px 15px 15px;
     border: 0.2vh solid black;
     font-size: 250%;
@@ -26,10 +26,11 @@
     display:inline-block;
     
     
+    
 }
 #JoinRoomInput{
     width: 65%;
-    height: 10vh;
+    height: 12vh;
     border-radius:  15px 15px 15px 15px;
     border: 0.2vh solid black;
     font-size: 250%;
@@ -40,7 +41,7 @@
 }
 #JoinRoomUserName{
     width: 75%;
-    height: 10vh;
+    height: 12vh;
     border-radius:  15px 15px 15px 15px;
     border: 0.2vh solid black;
     font-size: 250%;

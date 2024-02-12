@@ -35,19 +35,6 @@ function CloseFactor(e){
 
 
 
-//generate random code
-
-var randomCode 
-var readyToUse
-var CurStringCode
-function GenerateCode(){
-  //randomCode = Math.floor(1000 + Math.random() * 9000)
-  randomCode = 1000
-}
-
-//generate random code from database
-GenerateCode()
-
 
 
 
@@ -60,32 +47,9 @@ const CreateRoomHTML= () => {
   
   
 
+  
+  
 
-  const GetRandomCode = async () => {
-
-    
-    
-    //query the random code and then get that code from the database
-  
-    const querySnapshot = await getDocs(collection(db, "AvailableCodes"));
-    querySnapshot.forEach((doc) => {
-    if(doc.data()[randomCode] = randomCode){
-      readyToUse = doc.data()[randomCode]
-    }
-    document.getElementById('RoomPasswordText').innerHTML = readyToUse
-   
-   });
-  
-   CurStringCode = String(readyToUse)
-   //delete the code from the database after accessing it
-   const deleteFields = doc(db, "AvailableCodes", "bTqLQ7U8f7ScZu6uXXjj")
-   await updateDoc(deleteFields, {[CurStringCode]: deleteField()})
-   
-  
-  }
-  
-  
-  GetRandomCode()
 
 
 
@@ -238,7 +202,7 @@ let Code = document.getElementById('RoomPasswordText').innerText
             
             <div id="RoomPassword">
                 <div id="RoomPasswordTextOnly">Room Password:</div>
-                <div id="RoomPasswordText"></div>
+                <div id="RoomPasswordText">{localStorage.getItem('code')}</div>
                 <button id="CopyPassword"  >
                   Copy
                 </button>

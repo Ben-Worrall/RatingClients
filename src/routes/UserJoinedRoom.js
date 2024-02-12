@@ -59,10 +59,11 @@ async function addFactorsAuto(){
                 factor.classList.add('factor')
                          
              //the question that user is rating off of
-             let factorText = document.createElement('div')
+             let factorText = document.createElement('input')
              factorText.classList.add('factorText')
-             factorText.innerText = ArrOfFactors[i]
+             factorText.value = ArrOfFactors[i]
              factorText.spellcheck = "false"
+             factorText.readOnly = true
              
              //for the user to rate
              let factorRating = document.createElement('div')
