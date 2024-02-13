@@ -203,9 +203,7 @@ let Code = document.getElementById('RoomPasswordText').innerText
             <div id="RoomPassword">
                 <div id="RoomPasswordTextOnly">Room Password:</div>
                 <div id="RoomPasswordText">{localStorage.getItem('code')}</div>
-                <button id="CopyPassword"  >
-                  Copy
-                </button>
+                
             </div>
 
 
@@ -218,7 +216,7 @@ let Code = document.getElementById('RoomPasswordText').innerText
 
             <div id='RatingBoard'>
                 <div id="AddFactorDiv">
-                    <button id="AddFactorBNT" onClick={addFactor}>Add Factor</button>
+                    <button className="AddFactorBNT" onClick={addFactor}>+</button>
                 </div>
             </div>
 

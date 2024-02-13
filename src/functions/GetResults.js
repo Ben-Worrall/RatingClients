@@ -98,10 +98,11 @@ function BlackClickNotes(){
     factor.classList.add('Resultfactor')
              
   //the question that the host
-  let factorText = document.createElement('div')
+  let factorText = document.createElement('input')
   factorText.classList.add('ResultfactorText')
-  factorText.innerText = SubColId
+  factorText.value = SubColId
   factorText.spellcheck = "false"
+  factorText.readOnly = true
   
   //for the the rating
   let factorRating = document.createElement('div')
@@ -119,10 +120,10 @@ function BlackClickNotes(){
   
   
   //just a slash
-  let div2 = document.createElement('div')
-  div2.classList.add('Resultslash')
-  div2.innerText = "/"
-  factorRating.appendChild(div2)
+  //let div2 = document.createElement('div')
+  //div2.classList.add('Resultslash')
+  //div2.innerText = "/"
+  //factorRating.appendChild(div2)
   
   
   // what the rating is out of (10) can make host edit it later maybe

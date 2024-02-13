@@ -21,7 +21,7 @@ const SubmitAnswer = async () => {
    //connect those 3 and put them in a new doc and send to the factor collection that corresponds to the factor name in the server u are connected to
    
    
-    let AllFactors = Array.from( document.querySelectorAll('.factor') )
+    let AllFactors = Array.from( document.querySelectorAll('.Userfactor') )
     console.log(AllFactors)
     
     
@@ -29,9 +29,9 @@ const SubmitAnswer = async () => {
 
     
      async function asyncFunction(factor, resolve){
-        //console.log(document.getElementById("NoteText"+factor.children[0].innerText).innerText)
+        //console.log(document.getElementById("NoteText"+factor.children[0].value).innerText)
         
-        // (1)   factor.children[0].innerText
+        // (1)   factor.children[0].value
         // (2)   factor.children[1].children[0].value
         // (3)   localStorage.getItem('UserName')
         // (4)   localStorage.getItem('code')
@@ -49,8 +49,8 @@ const SubmitAnswer = async () => {
             if(doc.data().code == localStorage.getItem('code')){
                 //gotten doc (     doc.id      )
                 // 2nd step is to access sub collection with id of (1)
-                var CurFactorCol = collection(db,'Servers/' + doc.id + '/'+ factor.children[0].innerText);
-                let CurFac = factor.children[0].innerText
+                var CurFactorCol = collection(db,'Servers/' + doc.id + '/'+ factor.children[0].value);
+                let CurFac = factor.children[0].value
                 if((document.getElementById("NoteText"+CurFac))){
                     
                     await addDoc(CurFactorCol, {
@@ -123,9 +123,9 @@ export default SubmitAnswer
 
 
 AllFactors.forEach(async (factor)=>{
-        console.log(document.getElementById("NoteText"+factor.children[0].innerText).innerText)
+        console.log(document.getElementById("NoteText"+factor.children[0].value).innerText)
         
-        // (1)   factor.children[0].innerText
+        // (1)   factor.children[0].value
         // (2)   factor.children[1].children[0].value
         // (3)   localStorage.getItem('UserName')
         // (4)   localStorage.getItem('code')
@@ -143,11 +143,11 @@ AllFactors.forEach(async (factor)=>{
             if(doc.data().code == localStorage.getItem('code')){
                 //gotten doc (     doc.id      )
                 // 2nd step is to access sub collection with id of (1)
-                var CurFactorCol = collection(db,'Servers/' + doc.id + '/'+ factor.children[0].innerText);
-                let CurFac = factor.children[0].innerText
+                var CurFactorCol = collection(db,'Servers/' + doc.id + '/'+ factor.children[0].value);
+                let CurFac = factor.children[0].value
                 let NoteText = document.getElementById("NoteText"+CurFac).innerText
                 // 3rd step is to add a new doc to that collection we accessed, with the data from (2) and (3)
-                //alert(document.getElementById("NoteText"+factor.children[0].innerText).innerText)
+                //alert(document.getElementById("NoteText"+factor.children[0].value).innerText)
                 await addDoc(CurFactorCol, {
                     Notes: NoteText,
                     Rating: FactorVal,

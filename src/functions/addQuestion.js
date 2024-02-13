@@ -36,7 +36,7 @@ import React from "react";
  
         //for host to edit question
     let factorText = document.createElement('input')
-    factorText.classList.add('factorText')
+    factorText.classList.add('CreateFactorText')
     factorText.placeholder = "Edit Factor"
     factorText.contentEditable = "true"
     factorText.spellcheck = "false"
@@ -44,23 +44,23 @@ import React from "react";
     //factorText.style.borderRight = "0.25vh solid black"
     //factorText.style.overflowX = "scroll"
     let factorRating = document.createElement('div')
-    factorRating.classList.add('factorRating')
+    factorRating.classList.add('CreatefactorRating')
           
         //for  question mark (user will eventually be able edit and rate)
     let div1 = document.createElement('div')
-    div1.classList.add('ratingFor')
+    div1.classList.add('CreateratingFor')
     div1.innerText = "?"
     div1.contentEditable = "false"
     factorRating.appendChild(div1)
 
         //just a slash
-    let div2 = document.createElement('div')
-    div2.classList.add('slash')
-    div2.innerText = "/"
-    factorRating.appendChild(div2)
+    //let div2 = document.createElement('div')
+    //div2.classList.add('slash')
+    //div2.innerText = "/"
+    //factorRating.appendChild(div2)
         // what the rating is out of (10) can make host edit it later maybe
     let div3 = document.createElement('div')
-    div3.classList.add('ratingOutOf')
+    div3.classList.add('CreateratingOutOf')
     div3.innerText = "10"
     div3.spellcheck = "false"
     div3.contentEditable = "false"
@@ -69,7 +69,7 @@ import React from "react";
 
     //create exit button
     let exitBNT = document.createElement('button')
-    exitBNT.classList.add('DelFactor')
+    exitBNT.classList.add('CreateDelFactor')
     exitBNT.innerText = "X"
     exitBNT.onmousedown = CloseFactor
     let BntHolder = document.createElement('div')
@@ -94,10 +94,10 @@ import React from "react";
 
 
     //create new (add factor) button
-    let AddFactorBNT = document.createElement('div')
+    let AddFactorBNT = document.createElement('button')
     AddFactorBNT.onmousedown = addFactor
-    AddFactorBNT.innerText = "Add Factor"
-    AddFactorBNT.id = "AddFactorBNT"
+    AddFactorBNT.innerHTML = "+"
+    AddFactorBNT.classList.add("AddFactorBNT") 
 
    //append the (add factor) button to the (add factor) div
     AddFactorDiv.appendChild(AddFactorBNT) 

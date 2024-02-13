@@ -56,23 +56,23 @@ async function addFactorsAuto(){
                 //add it to the users page for him/her to rate
                  //create "rating question" (factor)
                 let factor = document.createElement('div')
-                factor.classList.add('factor')
+                factor.classList.add('Userfactor')
                          
              //the question that user is rating off of
              let factorText = document.createElement('input')
-             factorText.classList.add('factorText')
+             factorText.classList.add('UserfactorText')
              factorText.value = ArrOfFactors[i]
              factorText.spellcheck = "false"
              factorText.readOnly = true
              
              //for the user to rate
              let factorRating = document.createElement('div')
-             factorRating.classList.add('factorRating')
+             factorRating.classList.add('UserfactorRating')
          
          
              //for  question mark (user will be able edit and rate)
              let div1 = document.createElement('input')
-             div1.classList.add('ratingFor')
+             div1.classList.add('UserratingFor')
              div1.placeholder = "?"
              div1.contentEditable = "true"
              factorRating.appendChild(div1)
@@ -82,15 +82,15 @@ async function addFactorsAuto(){
          
          
              //just a slash
-             let div2 = document.createElement('div')
-             div2.classList.add('slash')
-             div2.innerText = "/"
-             factorRating.appendChild(div2)
+             //let div2 = document.createElement('div')
+             //div2.classList.add('slash')
+             //div2.innerText = "/"
+             //factorRating.appendChild(div2)
          
          
              // what the rating is out of (10) can make host edit it later maybe
              let div3 = document.createElement('div')
-             div3.classList.add('ratingOutOf')
+             div3.classList.add('UserratingOutOf')
              div3.innerText = "10"
              div3.spellcheck = "false"
              div3.contentEditable = "false"
@@ -229,9 +229,7 @@ addFactorsAuto()
         <div id="RoomPassword">
             <div id="RoomPasswordTextOnly">Room Password:</div>
             <div id="RoomPasswordText">{localStorage.getItem('code')}</div>
-            <button id="CopyPassword"  >
-              Copy
-            </button>
+            
         </div>
 
 

@@ -109,9 +109,7 @@ window.addEventListener("beforeunload", beforeUnloadListener);
             <div id="RoomPassword">
                 <div id="RoomPasswordTextOnly">Room Password:</div>
                 <div id="RoomPasswordText" >{localStorage.getItem('code')}</div>
-                <button id="CopyPassword"  >
-                  Copy
-                </button>
+                
             </div>
 
             {/*  display participants  */}
