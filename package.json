@@ -1,6 +1,6 @@
 {
   "homepage": "http://Ben-Worrall.github.io/RatingClients",
-  "name": "RatingClients",
+  "name": "ratingclients",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
